@@ -21,14 +21,12 @@ ASSET_FILE=$(ASSET_NAME).zip
 
 .PHONY: build push
 
-# Conditional rule to run a task if CONDITION is "lambda-asset"
-ifeq ($(ASSET_NAME),lambda-asset)
+ifeq ($(ASSET_TYPE),lambda)
 build: build-lambda
 push: push-lambda
 endif
 
-# Conditional rule to run a different task if CONDITION is "docker-image-asset"
-ifeq ($(ASSET_NAME),docker-image-asset)
+ifeq ($(ASSET_TYPE),docker-image)
 build: build-docker-image
 push: push-docker-image
 endif

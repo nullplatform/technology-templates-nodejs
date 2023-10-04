@@ -38,6 +38,7 @@ jobs:
         uses: nullplatform/github-action-asset-build@v1
         with:
           name: ${{ matrix.asset }}-asset
+          type: ${{ matrix.asset }}
           arguments: build-${{ matrix.asset }}
       - name: Push asset for ${{ needs.prepare.outputs.application-name }} and asset type {{ matrix.asset }}
         id: push-asset
