@@ -19,13 +19,19 @@
 
 ASSET_FILE=$(ASSET_NAME).zip
 
-.PHONY: all-lambda all-docker-image build-lambda build-docker-file push-lambda push-docker-file build push
+.PHONY: build push
 
-all-lambda: clean-lambda build-lambda push-lambda
-all-docker-image: build-docker-file push-docker-file
+# Conditional rule to run a task if CONDITION is "lambda-asset"
+ifeq ($(ASSET_NAME),lambda-asset)
+build: build-lambda
+push: push-lambda
+endif
 
-build: build-lambda build-docker-file
-push: push-docker-file push-lambda
+# Conditional rule to run a different task if CONDITION is "docker-image-asset"
+ifeq ($(ASSET_NAME),docker-image-asset)
+build: build-docker-image
+push: push-docker-image
+endif
 
 #
 # Lambda zip file
@@ -51,8 +57,9 @@ push-lambda:
 #
 # Docker image
 #
-build-docker-file:
+
+build-docker-image:
 	docker build $(BUILD_ARGS) -t $(ASSET_NAME) -f $(ASSET_WORKING_DIRECTORY)/Dockerfile $(BUILD_WORKING_DIRECTORY)
-push-docker-file:
+push-docker-image:
 	docker tag $(ASSET_NAME):latest $(ASSET_TARGET_URL)
 	docker push $(ASSET_TARGET_URL)
