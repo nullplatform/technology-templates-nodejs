@@ -1,6 +1,6 @@
-# Technology Template for Node.js Serverless Application
+# Technology Template for Node.js
 
-Welcome to the **Technology Template for Node.js Serverless** repository! This repository provides an example for building serverless applications using Node.js. Whether you're new to serverless development or looking to streamline your workflow, this template offer a great starting point.
+Welcome to the **Technology Template for Node.js** repository! This repository provides an example for building server or serverless applications using Node.js. Whether you're new to nullplatform development or looking to streamline your workflow, this template offer a great starting point.
 
 ## Table of Contents
 
@@ -9,7 +9,10 @@ Welcome to the **Technology Template for Node.js Serverless** repository! This r
 
 ## Introduction
 
-Serverless architecture allows you to focus on writing code without the need to manage infrastructure. This repository aims to provide you with a Node.js-based template that follow best practices for serverless development helping you get started quickly and efficiently.
+ This repository aims to provide you with a Node.js-based template that follow best practices for container and serverless development helping you get started quickly and efficiently.
+
+* Serverless architecture allows you to focus on writing code without the need to manage infrastructure
+* You can also deploy this application using a Docker image on EC2 instances or K8s clusters
 
 ## Getting Started
 
@@ -29,4 +32,4 @@ To get started, follow these steps:
 
 ---
 
-Enjoy building serverless applications using this Node.js template! If you have any questions or feedback, please open an issue in the repository. Happy coding!
+Enjoy building applications using this Node.js template! If you have any questions or feedback, please open an issue in the repository. Happy coding!
