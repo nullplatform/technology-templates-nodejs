@@ -49,7 +49,7 @@ jobs:
           type: ${{ matrix.asset }}
     outputs:
       build-id: ${{ needs.prepare.outputs.build-id }}
-      status: ${{ (steps.push-asset.conclusion == 'failure' || steps.push-asset.conclusion == 'cancelled') && 'failed' || 'successful' }}
+      status: ${{ contains(fromJSON('["failure", "cancelled"]'), job.status) && 'failed' || 'successful' }}
   finalize:
     runs-on: ubuntu-latest
     needs: build
