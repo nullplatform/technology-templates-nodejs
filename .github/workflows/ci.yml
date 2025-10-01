@@ -24,7 +24,7 @@ jobs:
     needs: prepare
     strategy:
       matrix:
-        asset: [docker-image]
+        asset: [lambda, docker-image]
     env:
       ASSET_TYPE: ${{ matrix.asset }}
     steps:
