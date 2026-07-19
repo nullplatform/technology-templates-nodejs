@@ -18,6 +18,12 @@
 image: node:18
 
 definitions:
+  # The docker service defaults to 1024MB and can OOM building heavier images.
+  # Give it 2048MB; the step's default memory budget is 4096MB (1024 build container
+  # + up to 3072 services), so this fits without needing `size: 2x` (which doubles cost).
+  services:
+    docker:
+      memory: 2048
   steps:
     - step: &nullplatform-build
         name: nullplatform build
@@ -49,7 +55,7 @@ definitions:
 
 pipelines:
   branches:
+    # This template's GitHub CI (.github/workflows/ci.yml) builds on `main` only, so
+    # Bitbucket triggers on `main` only too -- keep the two in sync.
     main:
-      - step: *nullplatform-build
-    master:
       - step: *nullplatform-build
